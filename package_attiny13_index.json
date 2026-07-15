@@ -14,7 +14,7 @@
           "architecture": "avr",
           "version": "1.0.0",
           "category": "Contributed",
-          "url": "https://github.com/KITTEN2008/attiny13-arduino-core/releases/download/v1.0.0/attiny13-arduino-core.zip",
+          "url": "https://github.com/KITTEN2008/attiny13-arduino-core/releases/download/v.1.0.0/attiny13-arduino-core.zip",
           "archiveFileName": "attiny13-arduino-core.zip",
           "checksum": "SHA-256:CA7A00805220A9F0C67DC64474B9C1FC9A920EC2105DAED18F69DC772CF27870",
           "size": "(10824",
