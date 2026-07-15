@@ -1,0 +1,76 @@
+# ATtiny13 Arduino Platform
+name=ATtiny13
+version=1.0.0
+
+# Compiler
+compiler.path={runtime.tools.avr-gcc.path}/bin/
+compiler.c.cmd=avr-gcc
+compiler.c.flags=-c -g -Os -w -ffunction-sections -fdata-sections -MMD -flto -mmcu=attiny13 -DF_CPU=9600000L -DARDUINO=10819 -DARDUINO_ARCH_AVR
+compiler.cpp.cmd=avr-g++
+compiler.cpp.flags=-c -g -Os -w -ffunction-sections -fdata-sections -MMD -flto -mmcu=attiny13 -DF_CPU=9600000L -DARDUINO=10819 -DARDUINO_ARCH_AVR
+compiler.S.cmd=avr-gcc
+compiler.S.flags=-c -g -Os -w -ffunction-sections -fdata-sections -MMD -flto -mmcu=attiny13
+compiler.ar.cmd=avr-gcc-ar
+compiler.ar.flags=rcs
+compiler.objcopy.cmd=avr-objcopy
+compiler.objcopy.eep.flags=-O ihex -j .eeprom --set-section-flags=.eeprom=alloc,load --no-change-warnings --change-section-lma .eeprom=0
+compiler.objcopy.hex.flags=-O ihex -R .eeprom
+compiler.elf2hex.cmd=avr-objcopy
+compiler.elf2hex.flags=-O ihex -R .eeprom
+compiler.size.cmd=avr-size
+
+# Compiler includes
+compiler.includes.flags=-I{runtime.platform.path}/cores/attiny13 -I{runtime.platform.path}/variants/attiny13
+
+# Compiler warnings
+compiler.warning_flags.none=-w
+compiler.warning_flags.default=-Wall
+compiler.warning_flags.more=-Wall -Wextra
+compiler.warning_flags.all=-Wall -Wextra -Wpedantic
+
+# Compiler optimization
+compiler.optimization_flags=-Os -flto -ffunction-sections -fdata-sections
+
+# Linker
+compiler.ld.cmd=avr-gcc
+compiler.ld.flags=-mmcu=attiny13 -Os -Wl,--gc-sections -flto
+
+# Uploader
+uploader.tool=avrdude
+upload.protocol=arduino
+upload.maximum_size=1024
+upload.speed=9600
+
+# Bootloader
+bootloader.tool=avrdude
+bootloader.maximum_size=1024
+
+# Build
+build.mcu=attiny13
+build.f_cpu=9600000L
+build.core=attiny13
+build.variant=attiny13
+build.extra_flags=-DATTINY13 -DF_CPU=9600000L -DARDUINO=10819
+
+# Recipes
+recipe.preproc.includes={compiler.path}{compiler.cpp.cmd} {compiler.cpp.flags} {compiler.includes.flags} -MM -MG {source_file} -MF {preproc_file}
+recipe.preproc.macros={compiler.path}{compiler.cpp.cmd} {compiler.cpp.flags} {compiler.includes.flags} -E -dM {source_file} -o {preproc_file}
+
+recipe.c.o.pattern={compiler.path}{compiler.c.cmd} {compiler.c.flags} {compiler.warning_flags} {compiler.optimization_flags} {compiler.includes.flags} {compiler.defines} -DARDUINO_BOARD="{build.board}" -DARDUINO_VARIANT="{build.variant}" -DARDUINO_ARCH_AVR {source_file} -o {object_file}
+recipe.cpp.o.pattern={compiler.path}{compiler.cpp.cmd} {compiler.cpp.flags} {compiler.warning_flags} {compiler.optimization_flags} {compiler.includes.flags} {compiler.defines} -DARDUINO_BOARD="{build.board}" -DARDUINO_VARIANT="{build.variant}" -DARDUINO_ARCH_AVR {source_file} -o {object_file}
+recipe.S.o.pattern={compiler.path}{compiler.S.cmd} {compiler.S.flags} {compiler.optimization_flags} {compiler.includes.flags} {compiler.defines} -DARDUINO_BOARD="{build.board}" -DARDUINO_VARIANT="{build.variant}" -DARDUINO_ARCH_AVR {source_file} -o {object_file}
+
+recipe.ar.pattern={compiler.path}{compiler.ar.cmd} {compiler.ar.flags} {archive_file_path} {object_files}
+
+recipe.elf.pattern={compiler.path}{compiler.ld.cmd} {compiler.ld.flags} {compiler.optimization_flags} -o {build_path}/{build_project_name}.elf {object_files} "{build.path}/core.a" -L{build.path} -lm
+
+recipe.objcopy.hex.pattern={compiler.path}{compiler.elf2hex.cmd} {compiler.elf2hex.flags} {build_path}/{build_project_name}.elf {build_path}/{build_project_name}.hex
+recipe.objcopy.eep.pattern={compiler.path}{compiler.objcopy.cmd} {compiler.objcopy.eep.flags} {build_path}/{build_project_name}.elf {build_path}/{build_project_name}.eep
+recipe.objcopy.lss.pattern={compiler.path}{compiler.objcopy.cmd} -O binary -j .text {build_path}/{build_project_name}.elf {build_path}/{build_project_name}.bin
+
+recipe.size.pattern={compiler.path}{compiler.size.cmd} -A {build_path}/{build_project_name}.elf
+recipe.size.regex=^(?:\.text|\.data|\.bootloader)\s+([0-9]+).*
+recipe.size.regex.data=^(?:\.data|\.bss|\.noinit)\s+([0-9]+).*
+recipe.size.regex.eeprom=^(?:\.eeprom)\s+([0-9]+).*
+
+recipe.combine.pattern={compiler.path}{compiler.objcopy.cmd} -O ihex {build_path}/{build_project_name}.elf {build_path}/{build_project_name}.hex
