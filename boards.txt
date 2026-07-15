@@ -1,0 +1,143 @@
+# ATtiny13 boards definitions
+
+attiny13.name=ATtiny13 (9.6 MHz internal)
+
+attiny13.upload.tool=avrdude
+attiny13.upload.protocol=arduino
+attiny13.upload.maximum_size=1024
+attiny13.upload.speed=9600
+
+attiny13.bootloader.tool=avrdude
+attiny13.bootloader.maximum_size=1024
+
+attiny13.build.mcu=attiny13
+attiny13.build.f_cpu=9600000L
+attiny13.build.core=attiny13
+attiny13.build.variant=attiny13
+attiny13.build.board=ATTINY13
+
+# ATtiny13A
+attiny13a.name=ATtiny13A (9.6 MHz internal)
+
+attiny13a.upload.tool=avrdude
+attiny13a.upload.protocol=arduino
+attiny13a.upload.maximum_size=1024
+attiny13a.upload.speed=9600
+
+attiny13a.bootloader.tool=avrdude
+attiny13a.bootloader.maximum_size=1024
+
+attiny13a.build.mcu=attiny13
+attiny13a.build.f_cpu=9600000L
+attiny13a.build.core=attiny13
+attiny13a.build.variant=attiny13
+attiny13a.build.board=ATTINY13A
+
+# ATtiny13A-PU (DIP-8 package)
+attiny13apu.name=ATtiny13A-PU (9.6 MHz internal)
+
+attiny13apu.upload.tool=avrdude
+attiny13apu.upload.protocol=arduino
+attiny13apu.upload.maximum_size=1024
+attiny13apu.upload.speed=9600
+
+attiny13apu.bootloader.tool=avrdude
+attiny13apu.bootloader.maximum_size=1024
+
+attiny13apu.build.mcu=attiny13
+attiny13apu.build.f_cpu=9600000L
+attiny13apu.build.core=attiny13
+attiny13apu.build.variant=attiny13
+attiny13apu.build.board=ATTINY13APU
+
+# ATtiny13 with 4.8 MHz internal clock
+attiny13_4m8.name=ATtiny13 (4.8 MHz internal)
+
+attiny13_4m8.upload.tool=avrdude
+attiny13_4m8.upload.protocol=arduino
+attiny13_4m8.upload.maximum_size=1024
+attiny13_4m8.upload.speed=9600
+
+attiny13_4m8.bootloader.tool=avrdude
+attiny13_4m8.bootloader.maximum_size=1024
+
+attiny13_4m8.build.mcu=attiny13
+attiny13_4m8.build.f_cpu=4800000L
+attiny13_4m8.build.core=attiny13
+attiny13_4m8.build.variant=attiny13
+attiny13_4m8.build.board=ATTINY13_4M8
+
+# ATtiny13 with 1.2 MHz internal clock
+attiny13_1m2.name=ATtiny13 (1.2 MHz internal)
+
+attiny13_1m2.upload.tool=avrdude
+attiny13_1m2.upload.protocol=arduino
+attiny13_1m2.upload.maximum_size=1024
+attiny13_1m2.upload.speed=9600
+
+attiny13_1m2.bootloader.tool=avrdude
+attiny13_1m2.bootloader.maximum_size=1024
+
+attiny13_1m2.build.mcu=attiny13
+attiny13_1m2.build.f_cpu=1200000L
+attiny13_1m2.build.core=attiny13
+attiny13_1m2.build.variant=attiny13
+attiny13_1m2.build.board=ATTINY13_1M2
+
+# Menu options for clock speed
+attiny13.menu.clock.internal9_6=9.6 MHz internal
+attiny13.menu.clock.internal9_6.build.f_cpu=9600000L
+
+attiny13.menu.clock.internal4_8=4.8 MHz internal
+attiny13.menu.clock.internal4_8.build.f_cpu=4800000L
+
+attiny13.menu.clock.internal1_2=1.2 MHz internal
+attiny13.menu.clock.internal1_2.build.f_cpu=1200000L
+
+# Menu options for programmer
+attiny13.menu.programmer.arduinoisp=Arduino as ISP
+attiny13.menu.programmer.arduinoisp.upload.protocol=arduinoisp
+
+attiny13.menu.programmer.usbasp=USBasp
+attiny13.menu.programmer.usbasp.upload.protocol=usbasp
+
+attiny13.menu.programmer.usbtiny=USBtinyISP
+attiny13.menu.programmer.usbtiny.upload.protocol=usbtiny
+
+# ATtiny13A menu options
+attiny13a.menu.clock.internal9_6=9.6 MHz internal
+attiny13a.menu.clock.internal9_6.build.f_cpu=9600000L
+
+attiny13a.menu.clock.internal4_8=4.8 MHz internal
+attiny13a.menu.clock.internal4_8.build.f_cpu=4800000L
+
+attiny13a.menu.clock.internal1_2=1.2 MHz internal
+attiny13a.menu.clock.internal1_2.build.f_cpu=1200000L
+
+attiny13a.menu.programmer.arduinoisp=Arduino as ISP
+attiny13a.menu.programmer.arduinoisp.upload.protocol=arduinoisp
+
+attiny13a.menu.programmer.usbasp=USBasp
+attiny13a.menu.programmer.usbasp.upload.protocol=usbasp
+
+attiny13a.menu.programmer.usbtiny=USBtinyISP
+attiny13a.menu.programmer.usbtiny.upload.protocol=usbtiny
+
+# ATtiny13A-PU menu options
+attiny13apu.menu.clock.internal9_6=9.6 MHz internal
+attiny13apu.menu.clock.internal9_6.build.f_cpu=9600000L
+
+attiny13apu.menu.clock.internal4_8=4.8 MHz internal
+attiny13apu.menu.clock.internal4_8.build.f_cpu=4800000L
+
+attiny13apu.menu.clock.internal1_2=1.2 MHz internal
+attiny13apu.menu.clock.internal1_2.build.f_cpu=1200000L
+
+attiny13apu.menu.programmer.arduinoisp=Arduino as ISP
+attiny13apu.menu.programmer.arduinoisp.upload.protocol=arduinoisp
+
+attiny13apu.menu.programmer.usbasp=USBasp
+attiny13apu.menu.programmer.usbasp.upload.protocol=usbasp
+
+attiny13apu.menu.programmer.usbtiny=USBtinyISP
+attiny13apu.menu.programmer.usbtiny.upload.protocol=usbtiny
