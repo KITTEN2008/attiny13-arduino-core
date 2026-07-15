@@ -1,6 +1,6 @@
 # ATtiny13 Arduino Platform
 name=ATtiny13
-version=1.0.0
+version=1.0.1
 
 # Compiler
 compiler.path={runtime.tools.avr-gcc.path}/bin/
